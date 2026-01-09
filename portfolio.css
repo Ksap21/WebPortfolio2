@@ -103,12 +103,13 @@ html, body {
 
 .icon-img {
   width: 40px;
-  height: 40px;           
+  height: 40px;
   border-radius: 50%;
   border: 2px solid #47a1e5;
-  transition: transform 0.3s ease;
-  object-fit: cover;       
+  background-color: #0a66c2;
+  object-fit: cover;   
 }
+
 
 .icon-img:hover {
   transform: scale(1.2);
@@ -126,13 +127,14 @@ html, body {
   padding: 0.5rem 1.25rem;
   font-size: 0.9rem;
   font-weight: 600;
-  color: white ;
+  color: white;                 
   background-color: var(--glow);
   border-radius: 6px;
   text-decoration: none;
   box-shadow: 0 0 10px var(--glow);
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
+
 
 .resume-button:hover {
   background-color: #0d6b08;
