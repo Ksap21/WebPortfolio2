@@ -82,7 +82,7 @@ html, body {
 
 .nav-link {
   display: block;
-  color: #64748b;
+  color: white;
   margin-bottom: 0.75rem;
   text-decoration: none;
   transition: color 0.2s;
