@@ -105,7 +105,7 @@ html, body {
   width: 40px;
   height: 40px;
   border-radius: 40%;
-  border: 2px solid #ffffff
+  border: 2px solid #ffffff;
   background-color: #0a66c2;
   object-fit: cover;   
 }
