@@ -612,4 +612,113 @@ html, body {
                 right: 20px;
                 bottom: 100px;
             }
-        }
+
+          /* === PROJECT DETAIL PAGE STYLES === */
+:root {
+    /* Adding a specific detail accent to match your green glow */
+    --detail-accent: #056608; 
+}
+
+/* Make the main project cards clickable and give them a lift effect */
+.project-card {
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--glow);
+    box-shadow: 0 10px 30px rgba(5, 102, 8, 0.2);
+}
+
+/* Styles for the inside of password-manager.html */
+.detail-body {
+    background-color: #0f172a; /* Matching your main theme */
+    overflow-y: auto !important; /* Allow scrolling on detail pages */
+}
+
+.content-wrap {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+.back-btn {
+    color: var(--glow);
+    text-decoration: none;
+    font-family: 'Fira Code', monospace;
+    display: inline-block;
+    margin-bottom: 2rem;
+}
+
+.back-btn:hover {
+    text-shadow: 0 0 5px var(--glow);
+}
+
+.tech-pill {
+    background: rgba(5, 102, 8, 0.1);
+    border: 1px solid var(--glow);
+    color: #e2e8f0;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    margin-right: 8px;
+    display: inline-block;
+}
+
+.logic-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 3rem 0;
+    align-items: start;
+}
+
+.screenshot-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.screenshot-card {
+    background: var(--bg-card);
+    border: 1px solid #2d2f36;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    transition: border-color 0.3s;
+}
+
+.screenshot-card:hover {
+    border-color: var(--glow);
+}
+
+.screenshot-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-bottom: 1px solid #2d2f36;
+}
+
+.screenshot-card p {
+    padding: 1rem;
+    font-size: 0.9rem;
+    text-align: center;
+    color: #94a3b8;
+}
+
+.security-box {
+    background: rgba(5, 102, 8, 0.05);
+    border-left: 4px solid var(--glow);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    margin: 2rem 0;
+}
+
+@media (max-width: 768px) {
+    .logic-grid {
+        grid-template-columns: 1fr;
+    }
+  }
+}
