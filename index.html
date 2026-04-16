@@ -13,7 +13,7 @@
  
 
 
-            <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+  <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
           
 </head>
 <body class="body-style">
@@ -23,7 +23,7 @@
     <header class="header">
     <div class="header-content">
       <h1 class="main-title">Kiran Sapkota</h1>
-      <h2 class="sub-title">Cybersecurity Student</h2>
+      <h2 class="sub-title">Cybersecurity Analyst</h2>
       <p class="bio">Building secure, scalable solutions through code and curiosity.</p>
       
       <nav class="nav">
@@ -73,20 +73,7 @@
 
    <section id="experience" class="section">
   <h2 class="section-heading">Experience</h2>
-   <div class="terminal-box">
-    <div class="terminal-header">
-      <span class="red"></span>
-      <span class="yellow"></span>
-      <span class="green"></span>
-    </div>
-    <div class="terminal-body">
-      <h3>IT Consultant – IT Solutions</h3>
-      <p>Jan 2026 - Present</p>
-      <p>•	Provide technical support to students, faculty, and staff in-person, remote assistance, and online service portals.<br>
-        •	Collaborate with college IT teams to deliver reliable, high-quality technology solutions that support university operations and academic goals.
-        .</p>
-    </div>
-  </div>
+
   <div class="terminal-box">
     <div class="terminal-header">
       <span class="red"></span>
@@ -95,12 +82,23 @@
     </div>
     <div class="terminal-body">
       <h3>Building Manager – CSU Operations</h3>
-      <p>Aug 2023 – Jan 2026</p>
+      <p>Aug 2023 – Present</p>
       <p>Provided technical support, maintained AV systems, and assisted with event setup. Learned responsibility, communication, and coordination across teams.</p>
     </div>
   </div>
 
- 
+  <div class="terminal-box">
+    <div class="terminal-header">
+      <span class="red"></span>
+      <span class="yellow"></span>
+      <span class="green"></span>
+    </div>
+    <div class="terminal-body">
+      <h3>IT Consultant – B. Tech Pvt. Ltd</h3>
+      <p>June 2020 – July 2022</p>
+      <p>Implemented client-facing IT solutions, provided system troubleshooting and training on secure software environments.</p>
+    </div>
+  </div>
 </section>
 
 
@@ -128,23 +126,25 @@
           </div>
         </div>
                 <!-- Project 2 -->
-        <div class="project-card" onclick="location.href='password-manager.html';" style="cursor: pointer;">
+    <div class="project-card">
           <h3>Password Manager</h3>
-            <p>Built a password checker GUI using Python and Tkinter. Designed to create, retrieve, and save strong passwords with secure login and password hashing.</p>
-            <div class="project-links">
-                <a href="password-manager.html" class="project-link">View Case Study</a>
-                <a href="https://github.com/Ksap21/PasswordStrengthChecker" class="project-link" target="_blank">GitHub Repo</a>
-                <a href="download.html" class="project-link">Download</a>
-                <div class="skill-logos">
-                    <i class="devicon-python-plain"></i>
-                    <i class="devicon-javascript-plain"></i>
-                </div>
+          <p>Built a password checker GUI using Python and Tkinter. Designed to create, retrieve, and save strong password with secure login and password hashing.</p>
+          <div class="project-links">
+            <a href="https://github.com/Ksap21/PasswordStrengthChecker" class="project-link">Github Repo</a>
+            <a href="download.html" class="project-link">Download</a>
+            <div class="skill-logos">
+            <i class="devicon-python-plain"></i>
+
+            <i class="devicon-javascript-plain"></i>
+          
             </div>
+          </div>
         </div>
+
                <!-- Project 3 -->
         <div class="project-card">
           <h3>FPS Zombie Shooter</h3>
-          <p>A first-person zombie shooting game made with Unity and C#.</p>
+          <p>A first person zombie shooting game made with Unity and C#.</p>
           <div class="project-links">
             <a href="https://github.com/Ksap21/Unity-Zombie-Game" class="project-link">Githib Repo</a>
             <div class="skill-logos">
@@ -163,6 +163,14 @@
 
      <div class="cert-card-modern">
       <div class="cert-top">
+        <h3 class="cert-title">Hackathon</h3>
+      </div>
+      <p class="cert-issued">Issued: April 2026</p>
+      <a href="HackathonCertificate.pdf" class="cert-button" view>View PDF</a>
+    </div>
+
+     <div class="cert-card-modern">
+      <div class="cert-top">
         <img src="Google_Icons-09-512.webp" alt="Google Cyber" class="cert-icon-modern" />
         <h3 class="cert-title">Google Cybersecurity Certificate</h3>
       </div>
@@ -175,7 +183,7 @@
         <img src="CompTIA-SecurityX-Logo.png.webp" alt="Security+" class="cert-icon-modern" />
         <h3 class="cert-title">CompTIA Security+ (SY0-601) <I>Pending</I></h3>
       </div>
-      <p class="cert-issued">Expected : August 2025</p>
+      <p class="cert-issued">Expected : August 2026</p>
       <!-- <a href="certificates/securityplus.pdf" class="cert-button" download>📥 Download PDF</a> -->
     </div>
 
@@ -184,11 +192,10 @@
   </div>
 </section>
 <!-- AI Chatbot -->
-
+  <!-- Chatbot Elements (Add at the end of your body) -->
     <button class="chatbot-btn" id="chatbotButton">
-      <img src="ChatBotImg.png" alt="Chatbot" class="chatbot-icon">
+        <i class="fas fa-comments"></i>
     </button>
-
     
     <div class="chat-window" id="chatWindow">
         <div class="chat-header">
@@ -205,7 +212,7 @@
         </div>
         <div class="chat-input">
             <input type="text" id="userInput" placeholder="Type your message...">
-            <button id="sendMessage"><i class=""></i></button>
+            <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
 
