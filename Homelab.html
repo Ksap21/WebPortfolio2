@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Homelab Infrastructure</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body style="background:#0f172a; color:#94a3b8; font-family: 'Fira Code', monospace;">
+
+  <div class="container" style="flex-direction: column; padding: 4rem;">
+
+    <!-- BACK BUTTON -->
+    <a href="index.html" style="color:#056608; text-decoration:none; margin-bottom:2rem;">
+      ← Back to Portfolio
+    </a>
+
+    <!-- TITLE -->
+    <h1 style="color:whitesmoke; text-shadow:0 0 10px #056608;">
+      Homelab Infrastructure Project
+    </h1>
+
+    <p style="max-width: 800px; line-height:1.7;">
+      This project is a self-hosted homelab running on Ubuntu with Docker-based services and a VPN-first architecture using Tailscale. The goal is to create a secure, private, and scalable home infrastructure environment.
+    </p>
+
+    <!-- NETWORK DIAGRAM SECTION -->
+    <h2 style="margin-top:3rem; color:#e2e8f0;">Network Architecture</h2>
+
+    <div style="margin-top:1rem; padding:1rem; border:1px solid #2d2f36; border-radius:10px;">
+      <img src="network-diagram.png" style="width:100%; border-radius:10px;" />
+    </div>
+
+    <!-- DESCRIPTION -->
+    <h2 style="margin-top:3rem; color:#e2e8f0;">System Design</h2>
+
+    <ul>
+      <li>VPN-first access using Tailscale (no public exposure)</li>
+      <li>All services containerized using Docker</li>
+      <li>Pi-hole for network-wide DNS filtering</li>
+      <li>Nextcloud for private file storage</li>
+      <li>Home Assistant for IoT automation</li>
+      <li>Ollama for local AI inference</li>
+    </ul>
+
+    <!-- TRAFFIC FLOW -->
+    <h2 style="margin-top:3rem; color:#e2e8f0;">Traffic Flow</h2>
+
+    <pre style="background:#1e293b; padding:1rem; border-radius:10px;">
+Client Devices
+   ↓
+Tailscale VPN
+   ↓
+Ubuntu Server (100.73.1.42)
+   ↓
+Docker Containers
+    ├── Nextcloud
+    ├── Home Assistant
+    ├── Ollama
+    └── Pi-hole
+    </pre>
+
+  </div>
+
+</body>
+</html>
