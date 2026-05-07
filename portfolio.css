@@ -248,7 +248,45 @@ html, body {
   filter: brightness(1.2) drop-shadow(0 0 6px var(--glow));
 }
 
+.tech-icon {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: drop-shadow(0 0 3px var(--glow));
+}
 
+/* For <i> icons */
+.skill-logos i.tech-icon {
+  font-size: 38px;
+}
+
+/* For images */
+.skill-logos img.tech-icon {
+  object-fit: contain;
+}
+
+.tech-icon:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 8px var(--glow));
+}
+
+.project-link-card {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.project-link-card .project-card {
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.project-link-card .project-card:hover {
+  transform: translateY(-5px);
+}
 /* === Terminal Style Boxes === */
 .terminal-box {
   background-color: #1a1b1f;
