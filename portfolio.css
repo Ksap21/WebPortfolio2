@@ -273,19 +273,25 @@ html, body {
   filter: drop-shadow(0 0 8px var(--glow));
 }
 
-.project-link-card {
+/* Styling for the Open Project text inside cards */
+.open-project-link {
+  display: inline-block;
+  font-size: 0.85rem;
+  color: #94a3b8; /* Subtle gray to match paragraph text */
+  margin-bottom: 0.75rem;
   text-decoration: none;
-  color: inherit;
-  display: block;
+  font-weight: 500;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
-.project-link-card .project-card {
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
+.open-project-link::after {
+  content: " ↗"; /* Adds a little arrow to indicate it's an external/open link */
+  font-size: 0.8rem;
 }
 
-.project-link-card .project-card:hover {
-  transform: translateY(-5px);
+.open-project-link:hover {
+  color: var(--glow);
+  text-shadow: 0 0 5px var(--glow);
 }
 /* === Terminal Style Boxes === */
 .terminal-box {
