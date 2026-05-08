@@ -34,7 +34,14 @@
       display: flex;
       flex-direction: column;
     }
-
+    .logic-flow-box {
+        background: white;
+        padding: 2rem;
+        border-radius: 8px;
+        width: 100%;
+        box-sizing: border-box;
+        border: 1px dashed var(--glow);
+    }
     h1 {
       color: whitesmoke;
       text-shadow: 0 0 10px var(--glow);
@@ -55,6 +62,7 @@
       line-height: 1.7;
       margin-top: 0.5rem;
       max-width: 850px;
+      text-align:justify;
     }
 
     ul {
@@ -107,24 +115,30 @@
     <!-- OVERVIEW -->
     <h2>Overview</h2>
     <p>
+    <div class="logic-flow-box">
       This homelab is a self-hosted infrastructure environment designed around a VPN-first security model using Tailscale. All services are containerized using Docker and run on a single Ubuntu server. The goal is to provide secure remote access, service isolation, and practical experience with modern DevOps and networking tools. The entire system follows a zero public exposure approach, meaning no services are directly exposed to the internet.
+    </div>
     </p>
 
     <!-- INFRASTRUCTURE -->
     <h2>Infrastructure</h2>
+    <div class="logic-flow-box">
     <ul>
       <li>Operating System: Ubuntu Server</li>
       <li>Local IP: 192.168.1.71</li>
       <li>Remote Access IP: Tailscale (100.73.1.42)</li>
       <li>Container Platform: Docker</li>
     </ul>
+    </div>
 
     <!-- NETWORK ARCHITECTURE -->
     <h2>Network Architecture</h2>
 
     <p>
+    <div class="logic-flow-box">
       The homelab uses a VPN-first access model powered by Tailscale. All remote connections follow a secure encrypted tunnel into the homelab server, which then routes traffic internally to Docker services.
     </p>
+    </div>
 
     <!-- NETWORK DIAGRAM SECTION -->
     <h3>Network Diagram</h3>
@@ -144,13 +158,16 @@ Client Device → Tailscale VPN → Homelab Server → Docker Services
     <h2>Containerized Services</h2>
 
     <h3>Infrastructure Services</h3>
+    <div class="logic-flow-box">
     <ul>
       <li>Pi-hole – Network-wide DNS filtering and ad blocking</li>
       <li>Tailscale – Secure VPN layer for remote access</li>
       <li>CasaOS – Lightweight Docker management interface</li>
     </ul>
+    </div>
 
     <h3>Application Services</h3>
+    <div class="logic-flow-box">
     <ul>
       <li>Nextcloud – Self-hosted file storage</li>
       <li>Home Assistant – Smart home automation</li>
@@ -158,9 +175,11 @@ Client Device → Tailscale VPN → Homelab Server → Docker Services
       <li>Open WebUI – Interface for Ollama</li>
       <li>Maybe Finance Stack – Personal finance system</li>
     </ul>
+    </div>
 
     <!-- SECURITY -->
     <h2>Security Design Principles</h2>
+    <div class="logic-flow-box">
     <ul>
       <li>No public port forwarding enabled</li>
       <li>No direct internet exposure</li>
@@ -168,21 +187,26 @@ Client Device → Tailscale VPN → Homelab Server → Docker Services
       <li>Container isolation using Docker</li>
       <li>Minimal attack surface design</li>
     </ul>
+    </div>
 
     <!-- PURPOSE -->
     <h2>Purpose</h2>
+    <div class="logic-flow-box">
     <ul>
       <li>Learning DevOps & networking</li>
       <li>Secure infrastructure design practice</li>
       <li>Self-hosting applications</li>
       <li>Cybersecurity portfolio project</li>
     </ul>
+    </div>
 
     <!-- SUMMARY -->
     <h2>Summary</h2>
+    <div class="logic-flow-box">
     <p>
-      This homelab demonstrates a modern self-hosted architecture built around secure VPN access, containerized services, and isolated infrastructure design.
+        This homelab demonstrates a modern self-hosted architecture built around secure VPN access, containerized services, and isolated infrastructure design.
     </p>
+    </div>
 
   </div>
 
