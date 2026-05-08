@@ -3,33 +3,115 @@
 <head>
   <meta charset="UTF-8">
   <title>Homelab Infrastructure</title>
-  <link rel="stylesheet" href="style.css">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+
+    :root {
+      --glow: #056608;
+      --bg: #0f172a;
+      --text: #94a3b8;
+      --card: rgba(30, 41, 59, 0.6);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      caret-color: transparent;
+      font-family: 'Fira Code', monospace;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      padding: 4rem;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    h1 {
+      color: whitesmoke;
+      text-shadow: 0 0 10px var(--glow);
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      margin-top: 2.5rem;
+      color: #e2e8f0;
+    }
+
+    h3 {
+      margin-top: 1rem;
+      color: #cbd5e1;
+    }
+
+    p {
+      line-height: 1.7;
+      margin-top: 0.5rem;
+      max-width: 850px;
+    }
+
+    ul {
+      margin-top: 0.5rem;
+      margin-left: 1.5rem;
+    }
+
+    pre {
+      background: #1e293b;
+      padding: 1rem;
+      border-radius: 10px;
+      margin-top: 1rem;
+      overflow-x: auto;
+    }
+
+    a {
+      color: var(--glow);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-shadow: 0 0 6px var(--glow);
+    }
+
+    .diagram-box {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: rgba(30, 41, 59, 0.4);
+      border-radius: 10px;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-top: 1rem;
+    }
+  </style>
 </head>
 
-<body style="background:#0f172a; color:#94a3b8; font-family: 'Fira Code', monospace;">
+<body>
 
-  <div class="container" style="flex-direction: column; padding: 4rem;">
+  <div class="container">
 
     <!-- BACK BUTTON -->
-    <a href="index.html" style="color:#056608; text-decoration:none; margin-bottom:2rem;">
-      ← Back to Portfolio
-    </a>
+    <a href="index.html">← Back to Portfolio</a>
 
     <!-- TITLE -->
-    <h1 style="color:whitesmoke; text-shadow:0 0 10px #056608;">
-      Homelab Infrastructure Project
-    </h1>
+    <h1>Homelab Infrastructure Project</h1>
 
     <!-- OVERVIEW -->
-    <h2 style="margin-top:2rem; color:#e2e8f0;">Overview</h2>
-
-    <p style="max-width: 800px; line-height:1.7;">
+    <h2>Overview</h2>
+    <p>
       This homelab is a self-hosted infrastructure environment designed around a VPN-first security model using Tailscale. All services are containerized using Docker and run on a single Ubuntu server. The goal is to provide secure remote access, service isolation, and practical experience with modern DevOps and networking tools. The entire system follows a zero public exposure approach, meaning no services are directly exposed to the internet.
     </p>
 
     <!-- INFRASTRUCTURE -->
-    <h2 style="margin-top:3rem; color:#e2e8f0;">Infrastructure</h2>
-
+    <h2>Infrastructure</h2>
     <ul>
       <li>Operating System: Ubuntu Server</li>
       <li>Local IP: 192.168.1.71</li>
@@ -38,87 +120,68 @@
     </ul>
 
     <!-- NETWORK ARCHITECTURE -->
-    <h2 style="margin-top:3rem; color:#e2e8f0;">Network Architecture</h2>
+    <h2>Network Architecture</h2>
 
-    <p style="max-width: 800px; line-height:1.7;">
+    <p>
       The homelab uses a VPN-first access model powered by Tailscale. All remote connections follow a secure encrypted tunnel into the homelab server, which then routes traffic internally to Docker services.
     </p>
 
-    <pre style="background:#1e293b; padding:1rem; border-radius:10px;">
+    <!-- NETWORK DIAGRAM SECTION -->
+    <h3>Network Diagram</h3>
+
+    <div class="diagram-box">
+      <p>Homelab traffic flow visualization:</p>
+
+      <img src="NetworkArchitecture.jpg" alt="Network Diagram">
+
+    </div>
+
+    <pre>
 Client Device → Tailscale VPN → Homelab Server → Docker Services
     </pre>
 
     <!-- CONTAINERS -->
-    <h2 style="margin-top:3rem; color:#e2e8f0;">Containerized Services</h2>
+    <h2>Containerized Services</h2>
 
-    <h3 style="color:#cbd5e1;">Infrastructure Services</h3>
+    <h3>Infrastructure Services</h3>
     <ul>
       <li>Pi-hole – Network-wide DNS filtering and ad blocking</li>
       <li>Tailscale – Secure VPN layer for remote access</li>
       <li>CasaOS – Lightweight Docker management interface</li>
     </ul>
 
-    <h3 style="color:#cbd5e1;">Application Services</h3>
+    <h3>Application Services</h3>
     <ul>
-      <li>Nextcloud – Self-hosted file storage and synchronization</li>
-      <li>Home Assistant – Smart home automation and device control</li>
-      <li>Ollama – Local large language model inference server</li>
-      <li>Open WebUI – Web interface for interacting with Ollama</li>
-      <li>Maybe Finance Stack – Personal finance system (app, worker, PostgreSQL, Redis)</li>
+      <li>Nextcloud – Self-hosted file storage</li>
+      <li>Home Assistant – Smart home automation</li>
+      <li>Ollama – Local LLM inference server</li>
+      <li>Open WebUI – Interface for Ollama</li>
+      <li>Maybe Finance Stack – Personal finance system</li>
     </ul>
 
-    <!-- DNS -->
-    <h2 style="margin-top:3rem; color:#e2e8f0;">Network Services & DNS</h2>
-
-    <p style="max-width: 800px; line-height:1.7;">
-      Pi-hole is deployed as a network-level DNS filter. It intercepts DNS requests from connected devices and blocks unwanted traffic such as ads and trackers before forwarding queries to external DNS providers. This improves privacy, performance, and control over domain resolution.
-    </p>
-
-    <!-- TRAFFIC FLOW -->
-    <h2 style="margin-top:3rem; color:#e2e8f0;">Traffic Flow Design</h2>
-
-    <h3 style="color:#cbd5e1;">VPN Access Flow</h3>
-    <pre style="background:#1e293b; padding:1rem; border-radius:10px;">
-Client Devices → Tailscale VPN → Server → Docker Services
-    </pre>
-
-    <h3 style="color:#cbd5e1;">DNS Resolution Flow</h3>
-    <pre style="background:#1e293b; padding:1rem; border-radius:10px;">
-Devices → Pi-hole → External DNS Servers
-    </pre>
-
-    <h3 style="color:#cbd5e1;">Internal Service Communication</h3>
-    <p style="max-width: 800px; line-height:1.7;">
-      Docker containers communicate internally using bridge networks and service names, allowing secure interaction between services such as databases, APIs, and caches without external exposure.
-    </p>
-
     <!-- SECURITY -->
-    <h2 style="margin-top:3rem; color:#e2e8f0;">Security Design Principles</h2>
-
+    <h2>Security Design Principles</h2>
     <ul>
       <li>No public port forwarding enabled</li>
-      <li>No direct internet exposure of services</li>
-      <li>All remote access secured via VPN (Tailscale)</li>
-      <li>Services isolated using Docker containers</li>
+      <li>No direct internet exposure</li>
+      <li>All access via Tailscale VPN</li>
+      <li>Container isolation using Docker</li>
       <li>Minimal attack surface design</li>
     </ul>
 
     <!-- PURPOSE -->
-    <h2 style="margin-top:3rem; color:#e2e8f0;">Purpose of This Setup</h2>
-
+    <h2>Purpose</h2>
     <ul>
-      <li>Learning DevOps and networking concepts</li>
-      <li>Practicing secure infrastructure design</li>
-      <li>Running self-hosted applications</li>
-      <li>Experimenting with container orchestration</li>
-      <li>Building a cybersecurity-focused portfolio project</li>
+      <li>Learning DevOps & networking</li>
+      <li>Secure infrastructure design practice</li>
+      <li>Self-hosting applications</li>
+      <li>Cybersecurity portfolio project</li>
     </ul>
 
     <!-- SUMMARY -->
-    <h2 style="margin-top:3rem; color:#e2e8f0;">Summary</h2>
-
-    <p style="max-width: 800px; line-height:1.7;">
-      This homelab demonstrates a modern self-hosted architecture built around VPN-first secure access, containerized microservices, network-level DNS control, and a fully isolated application stack.
+    <h2>Summary</h2>
+    <p>
+      This homelab demonstrates a modern self-hosted architecture built around secure VPN access, containerized services, and isolated infrastructure design.
     </p>
 
   </div>
