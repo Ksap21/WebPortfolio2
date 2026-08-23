@@ -1,214 +1,807 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <link rel="icon" type="image/png" href="WebsiteLogo.png">
   <meta charset="UTF-8">
-  <title>Homelab Infrastructure</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homelab Infrastructure & Security Lab</title>
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap');
 
     :root {
-      --glow: #056608;
+      --glow: #22c55e;
+      --glow-dark: #056608;
       --bg: #0f172a;
+      --bg-secondary: #111827;
       --text: #94a3b8;
-      --card: rgba(30, 41, 59, 0.6);
+      --heading: #f8fafc;
+      --card: rgba(30, 41, 59, 0.65);
+      --border: rgba(34, 197, 94, 0.35);
     }
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      caret-color: transparent;
       font-family: 'Fira Code', monospace;
     }
 
     body {
       background: var(--bg);
       color: var(--text);
-      padding: 4rem;
+      padding: 4rem 2rem;
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 1050px;
       margin: auto;
-      display: flex;
-      flex-direction: column;
-    }
-    .logic-flow-box {
-        background: white;
-        padding: 2rem;
-        border-radius: 8px;
-        width: 100%;
-        box-sizing: border-box;
-        border: 1px dashed var(--glow);
-    }
-    h1 {
-      color: whitesmoke;
-      text-shadow: 0 0 10px var(--glow);
-      margin-bottom: 1rem;
     }
 
-    h2 {
-      margin-top: 2.5rem;
-      color: #e2e8f0;
-    }
+    /* NAVIGATION */
 
-    h3 {
-      margin-top: 1rem;
-      color: #cbd5e1;
-    }
-
-    p {
-      line-height: 1.7;
-      margin-top: 0.5rem;
-      max-width: 850px;
-      text-align:justify;
-    }
-
-    ul {
-      margin-top: 0.5rem;
-      margin-left: 1.5rem;
-    }
-
-    pre {
-      background: #1e293b;
-      padding: 1rem;
-      border-radius: 10px;
-      margin-top: 1rem;
-      overflow-x: auto;
-    }
-
-    a {
+    .back-link {
+      display: inline-block;
+      margin-bottom: 2rem;
       color: var(--glow);
       text-decoration: none;
     }
 
-    a:hover {
-      text-shadow: 0 0 6px var(--glow);
+    .back-link:hover {
+      text-shadow: 0 0 8px var(--glow);
     }
 
-    .diagram-box {
-      margin-top: 1rem;
-      padding: 1rem;
-      background: rgba(30, 41, 59, 0.4);
-      border-radius: 10px;
+    /* TYPOGRAPHY */
+
+    h1 {
+      color: var(--heading);
+      text-shadow: 0 0 12px var(--glow-dark);
+      margin-bottom: 0.5rem;
+      font-size: 2.2rem;
     }
 
-    img {
-      max-width: 100%;
+    .subtitle {
+      margin-bottom: 2.5rem;
+      color: #64748b;
+    }
+
+    h2 {
+      margin-top: 3.5rem;
+      margin-bottom: 1rem;
+      color: #e2e8f0;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.6rem;
+    }
+
+    h3 {
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: #cbd5e1;
+    }
+
+    p {
+      line-height: 1.8;
+      margin-top: 0.5rem;
+    }
+
+    ul {
+      margin: 0.7rem 0 0 1.4rem;
+      line-height: 1.9;
+    }
+
+    strong {
+      color: #e2e8f0;
+    }
+
+    /* CARDS */
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
       border-radius: 10px;
       margin-top: 1rem;
+      backdrop-filter: blur(6px);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .service-card {
+      background: var(--card);
+      border: 1px solid rgba(148, 163, 184, 0.15);
+      border-left: 3px solid var(--glow);
+      padding: 1.2rem;
+      border-radius: 8px;
+    }
+
+    .service-card h3 {
+      margin-top: 0;
+      color: var(--heading);
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+    }
+
+    /* TECHNOLOGY TAGS */
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+
+    .tag {
+      background: rgba(34, 197, 94, 0.08);
+      border: 1px solid var(--border);
+      color: #86efac;
+      padding: 0.4rem 0.7rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+    }
+
+    /* ARCHITECTURE DIAGRAM */
+
+    .architecture {
+      background: #020617;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-top: 1rem;
+      overflow-x: auto;
+    }
+
+    pre {
+      color: #86efac;
+      line-height: 1.6;
+      font-size: 0.85rem;
+      white-space: pre;
+    }
+
+    /* STATUS */
+
+    .status {
+      color: #4ade80;
+      font-weight: 600;
+    }
+
+    /* FOOT NOTE */
+
+    .note {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: #64748b;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 750px) {
+      body {
+        padding: 2rem 1rem;
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 1.7rem;
+      }
+
+      pre {
+        font-size: 0.7rem;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <!-- BACK BUTTON -->
-    <a href="index.html">← Back to Portfolio</a>
+  <a class="back-link" href="index.html">← Back to Portfolio</a>
 
-    <!-- TITLE -->
-    <h1>Homelab Infrastructure Project</h1>
+  <!-- HERO -->
 
-    <!-- OVERVIEW -->
-    <h2>Overview</h2>
+  <h1>Homelab Infrastructure & Security Lab</h1>
+
+  <p class="subtitle">
+    Proxmox • Docker • Tailscale • Wazuh • Linux • Networking • Automation
+  </p>
+
+
+  <!-- OVERVIEW -->
+
+  <h2>01 // Overview</h2>
+
+  <div class="card">
     <p>
-    <div class="logic-flow-box">
-      This homelab is a self-hosted infrastructure environment designed around a VPN-first security model using Tailscale. All services are containerized using Docker and run on a single Ubuntu server. The goal is to provide secure remote access, service isolation, and practical experience with modern DevOps and networking tools. The entire system follows a zero public exposure approach, meaning no services are directly exposed to the internet.
-    </div>
+      My homelab is a self-hosted virtualization, networking, automation,
+      and cybersecurity environment built around Proxmox VE.
     </p>
 
-    <!-- INFRASTRUCTURE -->
-    <h2>Infrastructure</h2>
-    <div class="logic-flow-box">
-    <ul>
-      <li>Operating System: Ubuntu Server</li>
-      <li>Remote Access IP: Tailscale</li>
-      <li>Container Platform: Docker</li>
-    </ul>
-    </div>
-
-    <!-- NETWORK ARCHITECTURE -->
-    <h2>Network Architecture</h2>
+    <p>
+      The project provides a platform where I can deploy and manage virtual
+      machines, Linux containers, Docker applications, secure remote
+      networking, endpoint monitoring, local AI services, and security
+      testing systems.
+    </p>
 
     <p>
-    <div class="logic-flow-box">
-      The homelab uses a VPN-first access model powered by Tailscale. All remote connections follow a secure encrypted tunnel into the homelab server, which then routes traffic internally to Docker services.
+      Rather than running every application directly on one operating
+      system, the current architecture separates workloads across dedicated
+      virtual machines and LXC containers.
     </p>
+
+    <div class="tags">
+      <span class="tag">Proxmox VE</span>
+      <span class="tag">Linux</span>
+      <span class="tag">Docker</span>
+      <span class="tag">Tailscale</span>
+      <span class="tag">Wazuh</span>
+      <span class="tag">Networking</span>
+      <span class="tag">SIEM</span>
+      <span class="tag">Automation</span>
     </div>
+  </div>
 
-    <!-- NETWORK DIAGRAM SECTION -->
-    <h3>Network Diagram</h3>
 
-    <div class="diagram-box">
-      <p>Homelab traffic flow visualization:</p>
+  <!-- INFRASTRUCTURE -->
 
-      <img src="NetworkArchitecture.jpeg" alt="Network Diagram">
+  <h2>02 // Infrastructure</h2>
 
-    </div>
+  <div class="card">
 
-    <pre>
-Client Device → Tailscale VPN → Homelab Server → Docker Services
-    </pre>
-
-    <!-- CONTAINERS -->
-    <h2>Containerized Services</h2>
-
-    <h3>Infrastructure Services</h3>
-    <div class="logic-flow-box">
     <ul>
-      <li>Pi-hole – Network-wide DNS filtering and ad blocking</li>
-      <li>Tailscale – Secure VPN layer for remote access</li>
-      <li>CasaOS – Lightweight Docker management interface</li>
+      <li><strong>Hypervisor:</strong> Proxmox VE</li>
+      <li><strong>Virtualization:</strong> QEMU/KVM Virtual Machines + LXC Containers</li>
+      <li><strong>Application Platform:</strong> Docker</li>
+      <li><strong>Remote Networking:</strong> Tailscale</li>
+      <li><strong>Security Monitoring:</strong> Wazuh</li>
+      <li><strong>Local AI Platform:</strong> Ollama</li>
+      <li><strong>Infrastructure Dashboard:</strong> Homepage</li>
     </ul>
-    </div>
 
-    <h3>Application Services</h3>
-    <div class="logic-flow-box">
-    <ul>
-      <li>Nextcloud – Self-hosted file storage</li>
-      <li>Home Assistant – Smart home automation</li>
-      <li>Ollama – Local LLM inference server</li>
-      <li>Open WebUI – Interface for Ollama</li>
-      <li>Maybe Finance Stack – Personal finance system</li>
-    </ul>
-    </div>
+  </div>
 
-    <!-- SECURITY -->
-    <h2>Security Design Principles</h2>
-    <div class="logic-flow-box">
-    <ul>
-      <li>No public port forwarding enabled</li>
-      <li>No direct internet exposure</li>
-      <li>All access via Tailscale VPN</li>
-      <li>Container isolation using Docker</li>
-      <li>Minimal attack surface design</li>
-    </ul>
-    </div>
 
-    <!-- PURPOSE -->
-    <h2>Purpose</h2>
-    <div class="logic-flow-box">
-    <ul>
-      <li>Learning DevOps & networking</li>
-      <li>Secure infrastructure design practice</li>
-      <li>Self-hosting applications</li>
-      <li>Cybersecurity portfolio project</li>
-    </ul>
-    </div>
+  <!-- ARCHITECTURE -->
 
-    <!-- SUMMARY -->
-    <h2>Summary</h2>
-    <div class="logic-flow-box">
+  <h2>03 // Architecture</h2>
+
+  <div class="card">
     <p>
-        This homelab demonstrates a modern self-hosted architecture built around secure VPN access, containerized services, and isolated infrastructure design.
+      Proxmox VE acts as the virtualization layer for the environment.
+      Infrastructure workloads are separated into dedicated virtual
+      machines and LXC containers depending on their purpose.
     </p>
+  </div>
+
+  <div class="architecture">
+<pre>
+                         REMOTE DEVICES
+                  MacBook / PC / Mobile Devices
+                              │
+                              │
+                      Encrypted Tailscale
+                              │
+                              ▼
+                     ┌─────────────────┐
+                     │    TAILSCALE    │
+                     │ Private Network │
+                     └────────┬────────┘
+                              │
+                   ┌──────────┴──────────┐
+                   │                     │
+             Direct Clients       Subnet Routing
+                                         │
+                                  ┌──────▼──────┐
+                                  │ LXC 104     │
+                                  │ Tailscale   │
+                                  │ Router      │
+                                  └──────┬──────┘
+                                         │
+                                      Home LAN
+                                         │
+                                         ▼
+┌────────────────────────────────────────────────────────────┐
+│                         PROXMOX VE                         │
+│                                                            │
+│   SECURITY VMs                       INFRASTRUCTURE LXCs    │
+│                                                            │
+│   VM 100  Metasploitable2            LXC 103 Docker        │
+│   VM 101  Kali Linux                 LXC 104 Tailscale     │
+│   VM 102  Wazuh                      LXC 105 Ollama        │
+│                                      LXC 106 Homepage      │
+│                                                            │
+└────────────────────────────────────────────────────────────┘
+</pre>
+  </div>
+
+  <p class="note">
+    Private IP addresses and internal network details are intentionally
+    omitted from the public architecture diagram.
+  </p>
+
+
+  <!-- PROXMOX -->
+
+  <h2>04 // Virtualization with Proxmox</h2>
+
+  <div class="card">
+
+    <p>
+      Proxmox VE serves as the core virtualization platform for the lab.
+      It allows multiple isolated systems to run on a single physical
+      server while providing centralized control over virtual machines,
+      containers, networking, storage, and resource allocation.
+    </p>
+
+    <p>
+      I use both full virtual machines and lightweight LXC containers.
+      Security-focused operating systems run as VMs, while infrastructure
+      services that require fewer resources are hosted in LXC containers.
+    </p>
+
+  </div>
+
+
+  <!-- VM/LXC INVENTORY -->
+
+  <h2>05 // Virtual Machines & Containers</h2>
+
+  <div class="card-grid">
+
+    <div class="service-card">
+      <h3>VM 100 // Metasploitable2</h3>
+      <p>
+        Intentionally vulnerable virtual machine used as a controlled
+        target for cybersecurity testing and security lab exercises.
+      </p>
+    </div>
+
+    <div class="service-card">
+      <h3>VM 101 // Kali Linux</h3>
+      <p>
+        Dedicated penetration-testing environment used for learning
+        offensive security concepts and interacting with lab targets.
+      </p>
+    </div>
+
+    <div class="service-card">
+      <h3>VM 102 // Wazuh</h3>
+      <p>
+        Centralized SIEM and endpoint security monitoring platform used
+        to monitor systems across the environment.
+      </p>
+    </div>
+
+    <div class="service-card">
+      <h3>LXC 103 // Docker Services</h3>
+      <p>
+        Dedicated Docker host containing the majority of the
+        self-hosted application and infrastructure services.
+      </p>
+    </div>
+
+    <div class="service-card">
+      <h3>LXC 104 // Tailscale Router</h3>
+      <p>
+        Dedicated Tailscale subnet router providing secure remote
+        connectivity to resources on the private homelab network.
+      </p>
+    </div>
+
+    <div class="service-card">
+      <h3>LXC 105 // Ollama</h3>
+      <p>
+        Dedicated local AI inference environment running the Ollama
+        service for experimentation with locally hosted AI models.
+      </p>
+    </div>
+
+    <div class="service-card">
+      <h3>LXC 106 // Homepage</h3>
+      <p>
+        Centralized web dashboard providing quick access to homelab
+        applications and infrastructure services.
+      </p>
     </div>
 
   </div>
 
+
+  <!-- DOCKER -->
+
+  <h2>06 // Docker Environment</h2>
+
+  <div class="card">
+
+    <p>
+      Docker runs inside a dedicated Proxmox LXC container. Applications
+      are organized into separate Docker Compose stacks and bridge networks,
+      allowing related application components to communicate while keeping
+      the environment easier to manage.
+    </p>
+
+  </div>
+
+  <div class="card-grid">
+
+    <div class="service-card">
+      <h3>Nginx Proxy Manager</h3>
+      <p>
+        Reverse proxy management for routing web traffic to internal
+        applications.
+      </p>
+    </div>
+
+    <div class="service-card">
+      <h3>Nextcloud</h3>
+      <p>
+        Self-hosted cloud platform for file storage and private
+        cloud experimentation.
+      </p>
+    </div>
+
+    <div class="service-card">
+      <h3>Portainer</h3>
+      <p>
+        Web-based Docker management interface used to inspect and
+        administer containers, images, volumes, and networks.
+      </p>
+    </div>
+
+    <div class="service-card">
+      <h3>Uptime Kuma</h3>
+      <p>
+        Infrastructure monitoring platform used to track service
+        availability and uptime.
+      </p>
+    </div>
+
+    <div class="service-card">
+      <h3>n8n</h3>
+      <p>
+        Self-hosted workflow automation platform used to build
+        integrations and automated workflows.
+      </p>
+    </div>
+
+    <div class="service-card">
+      <h3>SearXNG</h3>
+      <p>
+        Self-hosted privacy-focused metasearch engine running inside
+        the Docker environment.
+      </p>
+    </div>
+
+    <div class="service-card">
+      <h3>DuckDNS</h3>
+      <p>
+        Dynamic DNS service used as part of the homelab's
+        networking infrastructure.
+      </p>
+    </div>
+
+    <div class="service-card">
+      <h3>MariaDB</h3>
+      <p>
+        Database backend supporting services such as Nextcloud and
+        Nginx Proxy Manager.
+      </p>
+    </div>
+
+  </div>
+
+
+  <!-- NETWORKING -->
+
+  <h2>07 // Secure Remote Networking</h2>
+
+  <div class="card">
+
+    <p>
+      Tailscale provides encrypted remote connectivity between authorized
+      devices and the homelab.
+    </p>
+
+    <p>
+      A dedicated LXC container operates as a Tailscale subnet router.
+      The router advertises the private homelab network and uses Linux
+      IP forwarding to route authorized Tailnet traffic to internal
+      resources.
+    </p>
+
+    <p>
+      Selected infrastructure systems also participate directly in the
+      Tailscale network, providing another method of secure device-to-device
+      communication.
+    </p>
+
+  </div>
+
+  <div class="architecture">
+<pre>
+Remote Device
+     │
+     │ Encrypted Tunnel
+     ▼
+Tailscale Network
+     │
+     ▼
+Tailscale Subnet Router
+     │
+     │ Linux IP Forwarding
+     ▼
+Private Homelab LAN
+     │
+     ├── Proxmox
+     ├── Virtual Machines
+     ├── LXC Containers
+     └── Internal Services
+</pre>
+  </div>
+
+
+  <!-- WAZUH -->
+
+  <h2>08 // Security Monitoring with Wazuh</h2>
+
+  <div class="card">
+
+    <p>
+      Wazuh provides centralized security monitoring and SIEM capabilities
+      for multiple systems in my environment.
+    </p>
+
+    <p>
+      Endpoint agents are deployed across my MacBook, Windows PC, and
+      server, allowing security events and endpoint activity to be
+      collected and analyzed from a centralized platform.
+    </p>
+
+  </div>
+
+  <div class="architecture">
+<pre>
+MacBook ───────────┐
+                   │
+Windows PC ────────┼────────► Wazuh SIEM
+                   │           VM 102
+Server ────────────┘
+</pre>
+  </div>
+
+
+  <!-- SECURITY LAB -->
+
+  <h2>09 // Cybersecurity Testing Lab</h2>
+
+  <div class="card">
+
+    <p>
+      The environment also contains a dedicated cybersecurity testing
+      lab consisting of Kali Linux and Metasploitable2 virtual machines.
+    </p>
+
+    <p>
+      Metasploitable provides an intentionally vulnerable target while
+      Kali Linux provides a separate security testing environment. This
+      creates a controlled platform for learning offensive security,
+      vulnerability assessment, Linux networking, and defensive concepts
+      without targeting external systems.
+    </p>
+
+  </div>
+
+  <div class="architecture">
+<pre>
+┌──────────────────┐             ┌────────────────────┐
+│    Kali Linux    │             │   Metasploitable2  │
+│      VM 101      │ ──────────► │       VM 100       │
+│ Security Testing │             │ Vulnerable Target  │
+└──────────────────┘             └────────────────────┘
+</pre>
+  </div>
+
+
+  <!-- LOCAL AI -->
+
+  <h2>10 // Local AI Infrastructure</h2>
+
+  <div class="card">
+
+    <p>
+      Ollama runs inside its own dedicated LXC container rather than
+      sharing the primary Docker environment. This provides a separate
+      environment for experimenting with local AI inference and future
+      AI-powered homelab automation.
+    </p>
+
+  </div>
+
+
+  <!-- MONITORING -->
+
+  <h2>11 // Monitoring & Administration</h2>
+
+  <div class="card-grid">
+
+    <div class="service-card">
+      <h3>Proxmox</h3>
+      <p>
+        VM, container, storage, networking, and resource administration.
+      </p>
+    </div>
+
+    <div class="service-card">
+      <h3>Wazuh</h3>
+      <p>
+        Centralized security monitoring and endpoint visibility.
+      </p>
+    </div>
+
+    <div class="service-card">
+      <h3>Uptime Kuma</h3>
+      <p>
+        Service availability and uptime monitoring.
+      </p>
+    </div>
+
+    <div class="service-card">
+      <h3>Portainer</h3>
+      <p>
+        Docker container and application-stack administration.
+      </p>
+    </div>
+
+    <div class="service-card">
+      <h3>Homepage</h3>
+      <p>
+        Central dashboard providing access to homelab services.
+      </p>
+    </div>
+
+  </div>
+
+
+  <!-- SKILLS -->
+
+  <h2>12 // Skills Demonstrated</h2>
+
+  <div class="card">
+
+    <div class="tags">
+      <span class="tag">Linux Administration</span>
+      <span class="tag">Proxmox VE</span>
+      <span class="tag">Virtualization</span>
+      <span class="tag">LXC</span>
+      <span class="tag">Docker</span>
+      <span class="tag">Docker Compose</span>
+      <span class="tag">Container Networking</span>
+      <span class="tag">Tailscale</span>
+      <span class="tag">VPN Networking</span>
+      <span class="tag">Subnet Routing</span>
+      <span class="tag">Reverse Proxying</span>
+      <span class="tag">SIEM</span>
+      <span class="tag">Wazuh</span>
+      <span class="tag">Endpoint Monitoring</span>
+      <span class="tag">Infrastructure Monitoring</span>
+      <span class="tag">Automation</span>
+      <span class="tag">Troubleshooting</span>
+    </div>
+
+  </div>
+
+
+  <!-- CHALLENGES -->
+
+  <h2>13 // Problems Solved</h2>
+
+  <div class="card">
+
+    <ul>
+      <li>
+        Migrated from a single-server design to a Proxmox-based
+        virtualization architecture.
+      </li>
+
+      <li>
+        Separated application workloads across VMs, LXC containers,
+        and Docker environments.
+      </li>
+
+      <li>
+        Configured a dedicated Tailscale subnet router with Linux
+        IP forwarding for remote LAN access.
+      </li>
+
+      <li>
+        Deployed and managed multi-container application stacks
+        with dedicated Docker bridge networks.
+      </li>
+
+      <li>
+        Implemented centralized endpoint security monitoring using Wazuh.
+      </li>
+
+      <li>
+        Configured reverse proxy, dynamic DNS, container management,
+        and uptime monitoring services.
+      </li>
+
+      <li>
+        Built a controlled offensive-security environment using
+        Kali Linux and Metasploitable2.
+      </li>
+
+      <li>
+        Troubleshot networking, storage, container, service,
+        and port-conflict issues throughout the environment.
+      </li>
+
+    </ul>
+
+  </div>
+
+
+  <!-- FUTURE -->
+
+  <h2>14 // Future Improvements</h2>
+
+  <div class="card">
+
+    <ul>
+      <li>Dedicated NAS and expanded homelab storage</li>
+      <li>Network segmentation using VLANs</li>
+      <li>Dedicated firewall/router platform such as OPNsense or pfSense</li>
+      <li>Expanded Wazuh detection and security monitoring</li>
+      <li>Automated infrastructure backups</li>
+      <li>Infrastructure-as-Code experimentation</li>
+      <li>Cloud integration with AWS or Azure</li>
+      <li>Hybrid cloud security projects</li>
+      <li>Additional automation through n8n and local AI</li>
+    </ul>
+
+  </div>
+
+
+  <!-- SUMMARY -->
+
+  <h2>15 // Project Summary</h2>
+
+  <div class="card">
+
+    <p>
+      This homelab has evolved from a basic self-hosted server into a
+      multi-layer infrastructure and cybersecurity environment.
+    </p>
+
+    <p>
+      The current design combines virtualization, containerization,
+      secure remote networking, endpoint security monitoring,
+      infrastructure monitoring, automation, local AI, and controlled
+      cybersecurity testing.
+    </p>
+
+    <p>
+      I continue to expand the environment as a practical platform for
+      developing skills in systems administration, networking,
+      cybersecurity, cloud infrastructure, and security engineering.
+    </p>
+
+  </div>
+
+</div>
+
 </body>
 </html>
+```
