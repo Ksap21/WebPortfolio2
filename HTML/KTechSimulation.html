@@ -1,0 +1,334 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="Images/WebsiteLogo.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KTech Simulation | Kiran Sapkota</title>
+  <meta name="description" content="A virtual enterprise network with VLAN segmentation, Linux routing, Samba Active Directory and role-based access control.">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap');
+
+    :root {
+      --glow: #22c55e;
+      --glow-dark: #056608;
+      --bg: #0f172a;
+      --bg-secondary: #111827;
+      --text: #94a3b8;
+      --heading: #f8fafc;
+      --card: rgba(30, 41, 59, 0.65);
+      --border: rgba(34, 197, 94, 0.35);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Fira Code', monospace;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      padding: 4rem 2rem;
+    }
+
+    .container {
+      max-width: 1050px;
+      margin: auto;
+    }
+
+    /* NAVIGATION */
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 2rem;
+      color: var(--glow);
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-shadow: 0 0 8px var(--glow);
+    }
+
+    /* TYPOGRAPHY */
+
+    h1 {
+      color: var(--heading);
+      text-shadow: 0 0 12px var(--glow-dark);
+      margin-bottom: 0.5rem;
+      font-size: 2.2rem;
+    }
+
+    .subtitle {
+      margin-bottom: 2.5rem;
+      color: #64748b;
+    }
+
+    h2 {
+      margin-top: 3.5rem;
+      margin-bottom: 1rem;
+      color: #e2e8f0;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.6rem;
+    }
+
+    h3 {
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: #cbd5e1;
+    }
+
+    p {
+      line-height: 1.8;
+      margin-top: 0.5rem;
+    }
+
+    ul {
+      margin: 0.7rem 0 0 1.4rem;
+      line-height: 1.9;
+    }
+
+    strong {
+      color: #e2e8f0;
+    }
+
+    /* CARDS */
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      border-radius: 10px;
+      margin-top: 1rem;
+      backdrop-filter: blur(6px);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .service-card {
+      background: var(--card);
+      border: 1px solid rgba(148, 163, 184, 0.15);
+      border-left: 3px solid var(--glow);
+      padding: 1.2rem;
+      border-radius: 8px;
+    }
+
+    .service-card h3 {
+      margin-top: 0;
+      color: var(--heading);
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+    }
+
+    /* TECHNOLOGY TAGS */
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+
+    .tag {
+      background: rgba(34, 197, 94, 0.08);
+      border: 1px solid var(--border);
+      color: #86efac;
+      padding: 0.4rem 0.7rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+    }
+
+    /* ARCHITECTURE DIAGRAM */
+
+    .architecture {
+      background: #020617;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-top: 1rem;
+      overflow-x: auto;
+    }
+
+    pre {
+      color: #86efac;
+      line-height: 1.6;
+      font-size: 0.85rem;
+      white-space: pre;
+    }
+
+    /* STATUS */
+
+    .status {
+      color: #4ade80;
+      font-weight: 600;
+    }
+
+    /* FOOT NOTE */
+
+    .note {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: #64748b;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 750px) {
+      body {
+        padding: 2rem 1rem;
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 1.7rem;
+      }
+
+      pre {
+        font-size: 0.7rem;
+      }
+    }
+    .table-wrap { overflow-x: auto; margin-top: 1rem; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th, td { padding: 0.8rem; text-align: left; border-bottom: 1px solid rgba(148,163,184,.18); vertical-align: top; }
+    th { color: #e2e8f0; }
+    .pending { color: #fbbf24; font-weight: 600; }
+    code { color: #86efac; overflow-wrap: anywhere; }
+    .architecture pre { min-width: max-content; }
+  </style>
+</head>
+
+<body>
+<div class="container">
+  <a class="back-link" href="index.html#projects">← Back to Portfolio</a>
+  <h1>KTech Simulation — Enterprise Network &amp; Security Lab</h1>
+  <p class="subtitle">Proxmox • Debian • VLANs • nftables • Samba AD • DNS • Kerberos • SSSD</p>
+  <p class="note">Personal infrastructure project | November 2026 – Present | <span class="status">Core infrastructure operational</span> · <span class="pending">Ongoing development</span></p>
+
+  <h2>01 Overview</h2>
+  <div class="card">
+    <p>I built KTech Simulation to recreate the IT infrastructure of a small organization inside my Proxmox homelab. The goal is to understand how enterprise networks, centralized authentication, security policies and departmental access work together in a real environment.</p>
+    <p>The lab separates servers, employees and clients into different VLANs. A dedicated Debian router controls traffic between the networks, while Samba Active Directory provides centralized identity management and internal DNS. I have successfully enrolled a Linux employee workstation into the domain and verified domain identity resolution across VLANs.</p>
+    <div class="tags">
+      <span class="tag">Proxmox VE</span><span class="tag">Debian 13</span><span class="tag">802.1Q VLANs</span><span class="tag">IPv4 Routing</span><span class="tag">NAT</span><span class="tag">nftables</span><span class="tag">Samba AD</span><span class="tag">Kerberos</span><span class="tag">LDAP</span><span class="tag">SSSD</span>
+    </div>
+  </div>
+
+  <h2>02 Network Architecture</h2>
+  <div class="card"><p>I created a dedicated Proxmox resource pool and a VLAN-aware virtual bridge for KTech, leaving my existing homelab network intact. The resource pool organizes the virtual machines; the bridge and VLAN tags provide Layer 2 segmentation.</p></div>
+  <div class="architecture" role="img" aria-label="KTech router connects an upstream home network to three separate VLANs: servers, employees and clients."><pre>
+                  UPSTREAM NETWORK / INTERNET
+                              │
+                        WAN (vmbr0)
+                              │
+                    ┌─────────▼─────────┐
+                    │   KTECH ROUTER    │
+                    │ Routing / Firewall│
+                    │        NAT        │
+                    └─────────┬─────────┘
+                              │
+                   VLAN-aware bridge: vmbr1
+               ┌──────────────┼──────────────┐
+               │              │              │
+          VLAN 10         VLAN 20         VLAN 30
+           SERVERS         EMPLOYEES        CLIENTS
+               │              │              │
+          DC01 (AD/DNS)    IT-ADMIN       CLIENT-PC
+          DB01 (setup)     HR-PC (setup)  (planned)
+</pre></div>
+  <p class="note">Logical topology. Private IP addresses, credentials and remote management endpoints are intentionally omitted.</p>
+  <div class="table-wrap"><table><thead><tr><th>VLAN</th><th>Purpose</th><th>Systems</th></tr></thead><tbody>
+    <tr><td>10</td><td>Server network</td><td>DC01; DB01 in development</td></tr>
+    <tr><td>20</td><td>Employee network</td><td>IT-ADMIN; HR-PC in development</td></tr>
+    <tr><td>30</td><td>Client network</td><td>CLIENT-PC planned</td></tr>
+  </tbody></table></div>
+
+  <h2>03 Virtual Machines &amp; Services</h2>
+  <div class="card-grid">
+    <div class="service-card"><h3>KTech-Router</h3><p class="status">Configured</p><p>Debian router with four virtual Ethernet interfaces, three internal VLAN gateways, an upstream WAN connection, IPv4 forwarding, NAT and stateful packet filtering.</p></div>
+    <div class="service-card"><h3>DC01 // Domain Controller</h3><p class="status">Operational</p><p>Dedicated Samba Active Directory server providing internal DNS, Kerberos authentication, LDAP directory services and centralized user and group management.</p></div>
+    <div class="service-card"><h3>IT-ADMIN // Employee Workstation</h3><p class="status">Domain joined</p><p>Debian with XFCE, realmd, adcli and SSSD. Successfully enrolled in the domain and resolved an IT employee account and its group memberships.</p></div>
+    <div class="service-card"><h3>HR-PC // Employee Workstation</h3><p class="pending">In development</p><p>Second employee endpoint intended to test HR authentication and departmental resource permissions independently of IT.</p></div>
+    <div class="service-card"><h3>CLIENT-PC // Client Workstation</h3><p class="pending">Planned</p><p>Separate client VLAN for testing restricted access to employee systems while permitting approved services.</p></div>
+    <div class="service-card"><h3>DB01 // Database Server</h3><p class="pending">Installation in progress</p><p>Dedicated Debian server intended for MariaDB, relational business data, departmental schemas and role-based SQL permissions. Kept separate from the domain controller.</p></div>
+  </div>
+
+  <h2>04 Routing, NAT &amp; Firewall</h2>
+  <div class="card">
+    <p>I configured static gateway addresses for each VLAN and enabled Linux IPv4 forwarding. The router uses nftables with a default-drop forwarding policy, explicit service allowances and connection tracking for established traffic.</p>
+    <div class="table-wrap"><table><thead><tr><th>Traffic</th><th>Policy configured</th></tr></thead><tbody>
+      <tr><td>Employees / clients → DC01</td><td>Selected DNS, Kerberos, LDAP and other domain service ports allowed</td></tr>
+      <tr><td>Client VLAN ↔ employee VLAN</td><td>New routed connections denied by default</td></tr>
+      <tr><td>DC01 / IT-ADMIN → Internet</td><td>Restricted package access through NAT; DNS via approved path</td></tr>
+      <tr><td>KTech → home LAN</td><td>New forwarded traffic to the home IPv4 subnet blocked</td></tr>
+      <tr><td>WAN → router</td><td>Unsolicited incoming traffic blocked; DHCP replies permitted</td></tr>
+    </tbody></table></div>
+    <p class="note">These are configured policies, not a claim of exhaustive penetration testing. Traffic between hosts on the same VLAN does not traverse the inter-VLAN firewall.</p>
+  </div>
+
+  <h2>05 Active Directory &amp; Identity Management</h2>
+  <div class="card">
+    <p>I provisioned Samba as an Active Directory Domain Controller using an internal test domain. The server provides DNS records for locating domain services and Kerberos tickets for authentication. I configured a Linux workstation to discover and join the domain using realmd and adcli, with SSSD resolving domain users and groups.</p>
+    <p>Departmental security groups are used to organize authorization. The IT account was verified as a domain user with IT group membership rather than automatically receiving domain administrator privileges.</p>
+    <div class="architecture"><pre>Workstation → DNS service discovery → Kerberos authentication
+            → LDAP directory lookup → SSSD identity resolution
+            → Linux user session / PAM</pre></div>
+    <p class="note">Domain enrollment and user identity resolution are verified. Full departmental resource permissions and endpoint access policies remain future work.</p>
+  </div>
+
+  <h2>06 Troubleshooting &amp; Validation</h2>
+  <div class="card-grid">
+    <div class="service-card"><h3>Inter-VLAN Connectivity</h3><p>Verified the workstation routing table and an open LDAP TCP connection across VLANs. Identified that failed ICMP pings were consistent with the restricted firewall policy, rather than assuming routing was broken.</p></div>
+    <div class="service-card"><h3>DNS &amp; Package Access</h3><p>Troubleshot installer-only APT sources and failed DNS resolution. Configured online repositories and tested internal DNS queries, including authoritative A and LDAP SRV records.</p></div>
+    <div class="service-card"><h3>Domain Controller Startup</h3><p>Inspected systemd service conditions, Samba configuration and the existing directory database before restarting the service. Avoided unnecessarily reprovisioning the domain.</p></div>
+    <div class="service-card"><h3>Domain Enrollment</h3><p>Investigated a failed realm join, confirmed Kerberos authentication and successfully enrolled IT-ADMIN. Verified active SSSD, domain identity resolution and the computer object on DC01.</p></div>
+  </div>
+  <div class="architecture"><pre>$ realm list
+configured: kerberos-member
+client-software: sssd
+
+$ systemctl is-active sssd
+active
+
+$ id itadmin@[internal-domain]
+Domain user and IT group membership resolved</pre></div>
+  <p class="note">Selected results summarized from lab testing; identifiers are redacted and output is abbreviated.</p>
+
+  <h2>07 Database &amp; Departmental Access (In Development)</h2>
+  <div class="card">
+    <p>The next phase introduces MariaDB on DB01 rather than on the domain controller. The design separates identity infrastructure from business data and allows independent maintenance and security controls.</p>
+    <div class="table-wrap"><table><thead><tr><th>Proposed schema</th><th>Example data</th><th>Intended access</th></tr></thead><tbody>
+      <tr><td><code>ktech_hr</code></td><td>Employees, leave, payroll</td><td>Authorized HR roles; sensitive tables restricted</td></tr>
+      <tr><td><code>ktech_it</code></td><td>Devices, tickets, software assets</td><td>IT roles</td></tr>
+      <tr><td><code>ktech_operations</code></td><td>Customers, orders, requests</td><td>Operations roles</td></tr>
+      <tr><td><code>ktech_shared</code></td><td>Departments, announcements</td><td>Approved users with read access</td></tr>
+    </tbody></table></div>
+    <p>The planned implementation will use MariaDB-native roles and least-privilege grants, followed by positive and negative permission tests, backups and auditing. Active Directory group membership will not automatically grant database access; application-level identity integration is a later milestone.</p>
+  </div>
+
+  <h2>08 Skills &amp; Next Steps</h2>
+  <div class="card">
+    <h3>Skills demonstrated</h3><p>Virtualization, Linux administration, VLAN segmentation, routing, NAT, stateful firewall configuration, DNS troubleshooting, Active Directory provisioning and Linux domain enrollment.</p>
+    <h3>Remaining milestones</h3><ul>
+      <li>Complete HR-PC and CLIENT-PC enrollment and access testing.</li>
+      <li>Implement MariaDB schemas, database roles and permission tests.</li>
+      <li>Apply endpoint-level security and test departmental resource access.</li>
+      <li>Integrate centralized logging and security monitoring, and document backup and recovery procedures.</li>
+    </ul>
+  </div>
+  <p class="note">KTech Simulation is an ongoing personal lab using fictional organizational identities and data.</p>
+</div>
+</body>
+</html>
